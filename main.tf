@@ -66,17 +66,17 @@ resource "aws_route_table" "private_routes" {
 resource "aws_route" "private_10_route" {
   route_table_id         = aws_route_table.private_routes.id
   destination_cidr_block = "10.0.0.0/8"
-  gateway_id             = aws_ec2_transit_gateway_vpc_attachment.tgw_attachment.id
+  gateway_id             = var.tgw_id
 }
 
 resource "aws_route" "private_172_route" {
   route_table_id         = aws_route_table.private_routes.id
   destination_cidr_block = "172.16.0.0/12"
-  gateway_id             = aws_ec2_transit_gateway_vpc_attachment.tgw_attachment.id
+  gateway_id             = var.tgw_id
 }
 
 resource "aws_route" "private_192_route" {
   route_table_id         = aws_route_table.private_routes.id
   destination_cidr_block = "192.168.0.0/16"
-  gateway_id             = aws_ec2_transit_gateway_vpc_attachment.tgw_attachment.id
+  gateway_id             = var.tgw_id
 }
