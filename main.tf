@@ -52,6 +52,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_attachment" {
     Name       = "tgw-attachment-${var.project_name}"
   }
 }
+
 ##################################################################################################################################
 # Routing Tables and Routes
 ##################################################################################################################################
@@ -79,4 +80,13 @@ resource "aws_route" "private_192_route" {
   route_table_id         = aws_route_table.private_routes.id
   destination_cidr_block = "192.168.0.0/16"
   gateway_id             = var.tgw_id
+}
+
+##################################################################################################################################
+# Attach routes to subnets
+##################################################################################################################################
+
+resource "aws_route_table_association" "private_nets" {
+  subnet_id      = aws_subnet.private_subnet.id
+  route_table_id = aws_route_table.private_routes.id
 }
