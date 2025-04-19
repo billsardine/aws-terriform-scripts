@@ -1,4 +1,4 @@
-# Terraform scripts for AWS 
+# Terraform scripts for AWS
 
 ## Terraform Host
 
@@ -10,3 +10,7 @@ The following software must be installed.  This is done automatically by the jum
 - AWS cli:  <https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>
 - Azure cli:  <https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt>
 - GCP cli:  <https://cloud.google.com/sdk/docs/install>
+
+## AWS info
+
+AMI's in AWS are zone dependant so ensure you are using the correct AMI for the region. Use this website to figure out which AMI to use.  <https://cloud-images.ubuntu.com/locator/ec2/>

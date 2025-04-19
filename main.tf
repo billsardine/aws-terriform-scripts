@@ -3,7 +3,7 @@
 #################################################################################################################################
 
 resource "aws_vpc" "app_vpc" {
-  count                = 1
+#  count                = 1
   cidr_block           = "${var.ip_prefix}.0/24"
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -16,7 +16,7 @@ resource "aws_vpc" "app_vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  count             = 1
+#  count             = 1
   vpc_id            = aws_vpc.app_vpc.id
   cidr_block        = "${var.ip_prefix}.0/26"
   availability_zone = var.availability_zone 
@@ -28,7 +28,7 @@ resource "aws_subnet" "public_subnet" {
 }
 
 resource "aws_subnet" "private_subnet" {
-  count              = 1
+#  count              = 1
   vpc_id            = aws_vpc.app_vpc.id
   cidr_block        = "${var.ip_prefix}.64/26"
   availability_zone = var.availability_zone
@@ -41,8 +41,8 @@ resource "aws_subnet" "private_subnet" {
 }
 
 resource "aws_subnet" "tgw_subnet" {
-  count              = 1
-  vpc_id            = aws_vpc.app_vpc["${count.index}"].id
+#  count              = 1
+  vpc_id            = aws_vpc.app_vpc.id
   cidr_block        = "${var.ip_prefix}.192/26"
   availability_zone = var.availability_zone
 #  availability_zone = "us-east-1a"
