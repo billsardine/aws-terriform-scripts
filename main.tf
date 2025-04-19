@@ -10,7 +10,7 @@ resource "aws_vpc" "app_vpc" {
   instance_tenancy     = "default"
   tags = {
     Name       = "vpc-${var.project_name}"
-    owner      = var.owner
+#    owner      = var.owner
 #    pod        = "pod${var.pod_number}"
   }
 }
@@ -22,7 +22,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone = var.availability_zone 
   tags = {
     Name       = "sn-${var.project_name}-public"
-    owner      = var.owner
+#    owner      = var.owner
 #    pod        = "pod${var.pod_number}"
   }
 }
@@ -35,7 +35,7 @@ resource "aws_subnet" "private_subnet" {
 #  availability_zone = "us-east-1a"
   tags = {
     Name       = "sn-${var.project_name}-private"
-    owner      = var.owner
+#    owner      = var.owner
 #    pod        = "pod${var.pod_number}"
   }
 }
@@ -48,7 +48,23 @@ resource "aws_subnet" "tgw_subnet" {
 #  availability_zone = "us-east-1a"
   tags = {
     Name       = "sn-${var.project_name}-tgw"
-    owner      = var.owner
+#    owner      = var.owner
+#    pod        = "pod${var.pod_number}"
+  }
+}
+
+##################################################################################################################################
+# TGW attachments
+##################################################################################################################################
+
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_attachment" {
+  subnet_ids         = [aws_subnet.tgw_subnet.id]
+  transit_gateway_id = var.tgw_id
+  vpc_id             = aws_vpc.app_vpc.id   
+  tags = {
+    Name       = "tgw-attachment-${var.project_name}"
+#    owner      = var.owner
 #    pod        = "pod${var.pod_number}"
   }
 }

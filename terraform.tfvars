@@ -12,3 +12,4 @@ project_name        = ""
 jumpbox1            = ""
 # ip_prefix should be in x.x.x notation
 ip_prefix           = "" 
+tgw_id              = ""

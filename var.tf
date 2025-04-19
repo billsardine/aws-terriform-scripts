@@ -41,3 +41,7 @@ variable "project_name" {
 variable "ip_prefix" {
   type    = string
 }
+
+variable "tgw_id" {
+  type    = string
+}
