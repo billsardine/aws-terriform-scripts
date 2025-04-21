@@ -98,19 +98,19 @@ resource "aws_route_table" "public_routes" {
   }
 }
 
-resource "aws_route" "private_10_route" {
+resource "aws_route" "public_10_route" {
   route_table_id         = aws_route_table.public_routes.id
   destination_cidr_block = "10.0.0.0/8"
   transit_gateway_id            = var.tgw_id
 }
 
-resource "aws_route" "private_172_route" {
+resource "aws_route" "public_172_route" {
   route_table_id         = aws_route_table.public_routes.id
   destination_cidr_block = "172.16.0.0/12"
   transit_gateway_id             = var.tgw_id
 }
 
-resource "aws_route" "private_192_route" {
+resource "aws_route" "public_192_route" {
   route_table_id         = aws_route_table.public_routes.id
   destination_cidr_block = "192.168.0.0/16"
   transit_gateway_id             = var.tgw_id
@@ -162,7 +162,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_10_0_0_0_in_ipv4" {
   ip_protocol       = "-1"
 }
 
-resource "aws_vpc_security_group_ingress_rule" "allow_172.16.0.0_in_ipv4" {
+resource "aws_vpc_security_group_ingress_rule" "allow_172_16_0_0_in_ipv4" {
   security_group_id = aws_security_group.allow_internal.id
   cidr_ipv4         = "172.16.0.0/122"
   ip_protocol       = "-1"
