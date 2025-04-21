@@ -82,6 +82,12 @@ resource "aws_route" "private_192_route" {
   transit_gateway_id             = var.tgw_id
 }
 
+resource "aws_route" "ineternet_access" {
+  route_table_id         = aws_route_table.private_routes.id
+  destination_cidr_block = "0.0.0.0/0"
+  transit_gateway_id             = var.tgw_id
+}
+
 ##################################################################################################################################
 # Attach routes to subnets
 ##################################################################################################################################
