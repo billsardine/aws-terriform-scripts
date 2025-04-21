@@ -164,7 +164,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_10_0_0_0_in_ipv4" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_172_16_0_0_in_ipv4" {
   security_group_id = aws_security_group.allow_internal.id
-  cidr_ipv4         = "172.16.0.0/122"
+  cidr_ipv4         = "172.16.0.0/12"
   ip_protocol       = "-1"
 }
 
