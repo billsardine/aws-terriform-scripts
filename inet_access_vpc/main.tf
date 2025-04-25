@@ -80,7 +80,7 @@ resource "aws_eip" "inet-natgw-eip" {
 ##################################################################################################################################
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "inet_tgw_attachment" {
-  subnet_ids         = [aws_subnet.tgw_subnet.id]
+  subnet_ids         = [aws_subnet.inet_tgw_subnet.id]
   transit_gateway_id = var.tgw_id
   vpc_id             = aws_vpc.inet_vpc.id   
   tags = {
