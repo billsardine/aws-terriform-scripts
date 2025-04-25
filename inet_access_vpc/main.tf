@@ -120,7 +120,7 @@ resource "aws_route" "private_192_route" {
 resource "aws_route" "inet_internet_access" {
   route_table_id         = aws_route_table.inet_private_routes.id
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = var.tgw_id  need to connect to nat gateway
+  nat_gateway_id         = aws_nat_gateway.inet_natgw.id
 }
 
 resource "aws_route_table" "public_routes" {
