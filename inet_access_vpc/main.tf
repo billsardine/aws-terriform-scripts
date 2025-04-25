@@ -182,7 +182,7 @@ resource "aws_route_table_association" "public_nets" {
 resource "aws_security_group" "allow_internal" {
   name   = "private-sg-${var.project_name}-internal-nets-only"
   description = "Allow all inbound internal traffic and all outbound traffic"
-  vpc_id = aws_vpc.app_vpc.id
+  vpc_id = aws_vpc.inet_vpc.id
   tags = {
     Name       = "private-sg-${var.project_name}-internal-nets-only"
   }
